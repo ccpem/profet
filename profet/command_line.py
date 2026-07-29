@@ -3,7 +3,6 @@ from profet import Fetcher
 from typing import List
 import os
 
-
 __all__ = ["main"]
 
 

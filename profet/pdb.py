@@ -1,5 +1,4 @@
 from urllib.request import urlretrieve
-from rcsbapi.search import TextQuery
 from .enums import FileType
 
 
@@ -29,6 +28,11 @@ class PDB_DB:
             The PDB id
 
         """
+        # Importing rcsbapi immediately results in network calls. This breaks
+        # packages importing profet which do not have access to the network. So
+        # let's just import it when needed
+        from rcsbapi.search import TextQuery
+
         query = TextQuery(value=uniprot_id)
         for result in query():
             return result
